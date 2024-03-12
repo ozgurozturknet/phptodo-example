@@ -5,13 +5,35 @@ on:
         branches:
             - main
     workflow_dispatch:
+env:
+    PADISAH: Osman       
 
 jobs:
     docker-img-build-job:
+        env:
+            PADISAH2: Orhan
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
+
             - run: pwd && ls -al
+              env: 
+                PADISAH3: MURAT
+            - run: |    
+                echo $PADISAH
+                echo $PADISAH2
+                echo $PADISAH3
+    docker-push:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - run: |
+                echo $PADISAH
+                echo $PADISAH2
+                echo $PADISAH3
+
+
+
 
 
             # - run: docker image build -t ozgurozturknet/phptodo-example:frontend -f ./Dockerfile.frontend
