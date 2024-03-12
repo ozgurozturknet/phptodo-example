@@ -1,0 +1,23 @@
+name: Docker Image Release Pipeline
+
+on:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+
+jobs:
+    docker-img-build-job:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - run: pwd && ls -al
+
+
+            # - run: docker image build -t ozgurozturknet/phptodo-example:frontend -f ./Dockerfile.frontend
+            # - run: docker image build -t ozgurozturknet/phptodo-example:backend -f ./Dockerfile.backend
+            # - run: docker image build -t ozgurozturknet/phptodo-example:database -f ./Dockerfile.database
+            # - run: docker login -u ozgurozturknet -p P@ssw0rd!
+            # - run: docker push ozgurozturknet/phptodo-example:frontend
+            # - run: docker push ozgurozturknet/phptodo-example:backend
+            # - run: docker push ozgurozturknet/phptodo-example:database

@@ -14,3 +14,9 @@ jobs:
         steps:
             - name: "Hello World"
               run: echo "Hello World" 
+            - name: Deneme
+              run: ls -al
+            - name: Pwd
+              run: pwd
+            - name: Deneme 2
+              uses: actions/checkout@v4  
