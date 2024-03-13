@@ -20,8 +20,13 @@ jobs:
             - name: Dosyayi Check Etme
               run: cat osman.txt
 
-            - name: Archive code coverage results
+            - name: Artifact upload
               uses: actions/upload-artifact@v4
               with:
                name: Osman Abi'nin Raporu
                path: osman.txt
+    artifacts-deneme2-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Hello 2
+              run: echo "Hello World 2"
