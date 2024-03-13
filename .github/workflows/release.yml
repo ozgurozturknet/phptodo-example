@@ -53,7 +53,7 @@ jobs:
           name: Git Repo Checkout
 
         - name: Docker Stack Deploy
-          uses: kitconcept/docker-stack-deploy@v1.2.0
+          uses: kitconcept/docker-stack-deploy@v1.0.1
           with:
             remote_host: ${{ secrets.REMOTE_HOST }}
             remote_user: ${{ secrets.REMOTE_USER }}
