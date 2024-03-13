@@ -7,10 +7,15 @@ on:
     workflow_dispatch:
 
 
-
-jobs:
-    bek_ilk_job:
+jobs: 
+    artifacts-deneme-job:
         runs-on: ubuntu-latest
         steps:
-          - name: ${{ github.repositoryUrl }}	
-            run: echo "Hello World!"
+            - name: Hello
+              run: echo "Hello World"
+            
+            - name: Dosya Oluşturma
+              run: echo "Hello World" >> osman.txt 
+            
+            - name: Dosyayi Check Etme
+              run: cat osman.txt
