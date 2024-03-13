@@ -2,21 +2,21 @@ version: "3.8"
 services:
 
   frontend:
-    image: ugurkontel/phptodo:frontend
+    image: ozgurozturknet/phptodo:frontend
     ports:
       - 3000:80
 
   backend:
-    image: ugurkontel/phptodo:backend
+    image: ozgurozturknet/phptodo:backend
     ports:
       - 5000:80
     secrets:
       - mysql_password
     environment:
-      HTTP_ORIGIN: http://localhost:3000
+      HTTP_ORIGIN: http://34.245.58.97:3000
 
   database:
-    image: ugurkontel/phptodo:database
+    image: ozgurozturknet/phptodo:database
     environment:
       MYSQL_DATABASE: todo_app
       MYSQL_USER: todo_admin

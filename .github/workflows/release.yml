@@ -11,6 +11,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
+              name: Git Repo Checkout
 
             - name: Set up QEMU
               uses: docker/setup-qemu-action@v3
@@ -28,7 +29,7 @@ jobs:
               uses: docker/build-push-action@v5
               with:
                 push: true
-                tags: ozgurozturknet/phptodofrontend:${{ github.sha }}
+                tags: ozgurozturknet/phptodo:frontend
                 file: ./Dockerfile.frontend
 
             - name: Build and push Backend
@@ -44,20 +45,18 @@ jobs:
                 push: true
                 tags: ozgurozturknet/phptodo:database
                 file: ./Dockerfile.database
+    deploy-job:
+      runs-on: ubuntu-latest
+      needs: docker-img-build-job
+      steps:
+        - uses: actions/checkout@v4
+          name: Git Repo Checkout
 
-
-
-            # - run: docker image build -t ozgurozturknet/phptodo-example:frontend -f ./Dockerfile.frontend
-            # - run: docker image build -t ozgurozturknet/phptodo-example:backend -f ./Dockerfile.backend
-            # - run: docker image build -t ozgurozturknet/phptodo-example:database -f ./Dockerfile.database
-            # - run: docker login -u ozgurozturknet -p P@ssw0rd!
-            # - run: docker push ozgurozturknet/phptodo-example:frontend
-            # - run: docker push ozgurozturknet/phptodo-example:backend
-            # - run: docker push ozgurozturknet/phptodo-example:database
-
-
-
-
-        # image build et
-        # docker'a login ol
-        # docker push ile gönder
+        - name: Docker Stack Deploy
+          uses: kitconcept/docker-stack-deploy@v1.2.0
+          with:
+            remote_host: ${{ secrets.REMOTE_HOST }}
+            remote_user: ${{ secrets.REMOTE_USER }}
+            remote_private_key: ${{ secrets.REMOTE_PRIVATE_KEY }}
+            stack_file: "docker-compose.yml"
+            stack_name: "phptodo"
