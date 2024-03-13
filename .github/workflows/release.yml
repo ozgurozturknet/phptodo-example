@@ -28,7 +28,7 @@ jobs:
               uses: docker/build-push-action@v5
               with:
                 push: true
-                tags: ozgurozturknet/phptodo:frontend
+                tags: ozgurozturknet/phptodofrontend:${{ github.sha }}
                 file: ./Dockerfile.frontend
 
             - name: Build and push Backend
