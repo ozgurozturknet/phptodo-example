@@ -19,3 +19,9 @@ jobs:
             
             - name: Dosyayi Check Etme
               run: cat osman.txt
+
+            - name: Archive code coverage results
+              uses: actions/upload-artifact@v4
+              with:
+               name: Osman Abi'nin Raporu
+               path: osman.txt
